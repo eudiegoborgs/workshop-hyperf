@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 
 use App\Controller\LinkController;
+use App\Middleware\BasicAuthMiddleware;
 use Hyperf\HttpServer\Router\Router;
 
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
@@ -19,4 +20,4 @@ Router::get('/favicon.ico', function () {
     return '';
 });
 
-Router::post('/link', [LinkController::class, 'create']);
+Router::post('/link', [LinkController::class, 'create'], ['middleware' => [BasicAuthMiddleware::class]]);
