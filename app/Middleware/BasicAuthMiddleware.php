@@ -19,7 +19,7 @@ class BasicAuthMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if ($request->getHeader('Authorization') != 'workshop') {
+        if ($request->getHeader('Authorization')[0] ?? null != 'workshop') {
             throw new UnauthorizedHttpException();
         }
         return $handler->handle($request);
