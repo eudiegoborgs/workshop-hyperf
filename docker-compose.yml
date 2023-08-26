@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:
+  image:
+    container_name: workshop-hyperf
+    image: workshop-hyperf
+    build:
+      context: .
+
+  bin: &base
+    container_name: bin.workshop
+    profiles:
+      - bin
+    image: workshop-hyperf
+    depends_on:
+      - image
+    entrypoint:
+      - php
+      - bin/hyperf.php
+    env_file:
+      - .env
+    volumes:
+      - ./:/opt/www
+
+  composer:
+    <<: *base
+    container_name: composer.workshop
+    profiles:
+      - composer
+    entrypoint:
+      - composer
+    command: validate
+
+  app:
+    <<: *base
+    container_name: app.workshop
+    profiles: []
+    entrypoint:
+      - php
+      - bin/hyperf.php
+      - server:watch
+    ports:
+      - "9501:9501"
+
+  db:
+    container_name: db
+    image: mysql:8.1
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: workshop
+      MYSQL_DATABASE: workshop
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql.workshop.dev:/var/lib/mysql
+
+volumes:
+  mysql.workshop.dev:
+    driver: local
