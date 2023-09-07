@@ -58,6 +58,19 @@ services:
     container_name: cache
     image: 'redis:6.2.6'
 
+  
+  amqp:
+    image: rabbitmq:3-management-alpine
+    container_name: amqp
+    ports: 
+    - 25672:25672 # (erlang) communication between the nodes and CLI tool
+    - 15672:15672 # communication with the web management API 
+    volumes:
+    - /docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+    - /docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    restart: always
+
 volumes:
   mysql.workshop.dev:
     driver: local
+  
