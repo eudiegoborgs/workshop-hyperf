@@ -21,3 +21,4 @@ Router::get('/favicon.ico', function () {
 });
 
 Router::post('/link', [LinkController::class, 'create'], ['middleware' => [BasicAuthMiddleware::class]]);
+Router::get('/{alias}', [LinkController::class, 'getUrlByAlias']);

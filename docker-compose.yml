@@ -54,6 +54,10 @@ services:
     volumes:
       - mysql.workshop.dev:/var/lib/mysql
 
+  cache:
+    container_name: cache
+    image: 'redis:6.2.6'
+
 volumes:
   mysql.workshop.dev:
     driver: local

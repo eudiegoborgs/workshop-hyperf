@@ -34,4 +34,9 @@ class LinkRepository implements LinkRepositoryInterface
     {
         // TODO: Implement delete() method.
     }
+
+    public function getByAlias(string $alias): ?Link
+    {
+        return Link::query()->where('alias', $alias)->first();
+    }
 }

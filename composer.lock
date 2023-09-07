@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "563ed2d2e8231fcda0e6eb6f9be7980c",
+    "content-hash": "3388e3e0dec46a6fea6386b88a7e69bf",
     "packages": [
         {
             "name": "doctrine/deprecations",
@@ -2558,16 +2558,16 @@
         },
         {
             "name": "hyperf/redis",
-            "version": "v3.0.21",
+            "version": "v3.0.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/redis.git",
-                "reference": "65ec6cbecb64793670ef1a512bd15369b683c746"
+                "reference": "a80b5c6d05fbaab2a225a58d9d86af16c7669661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/redis/zipball/65ec6cbecb64793670ef1a512bd15369b683c746",
-                "reference": "65ec6cbecb64793670ef1a512bd15369b683c746",
+                "url": "https://api.github.com/repos/hyperf/redis/zipball/a80b5c6d05fbaab2a225a58d9d86af16c7669661",
+                "reference": "a80b5c6d05fbaab2a225a58d9d86af16c7669661",
                 "shasum": ""
             },
             "require": {
@@ -2616,7 +2616,7 @@
                 "pull-request": "https://github.com/hyperf/hyperf/pulls",
                 "source": "https://github.com/hyperf/hyperf"
             },
-            "time": "2023-05-15T04:08:45+00:00"
+            "time": "2023-08-29T01:57:52+00:00"
         },
         {
             "name": "hyperf/resource",
