@@ -9,7 +9,6 @@ use App\Request\LinkRequest;
 use App\Resource\LinkResource;
 use App\Service\LinkService;
 use Fig\Http\Message\StatusCodeInterface;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface as HyperfResponse;
 
