@@ -10,4 +10,5 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 return [
+    \App\Repository\LinkRepositoryInterface::class => \App\Repository\LinkRepository::class
 ];

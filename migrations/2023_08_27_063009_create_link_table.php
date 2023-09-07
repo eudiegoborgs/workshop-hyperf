@@ -16,7 +16,7 @@ class CreateLinkTable extends Migration
             $table->string('alias', 32)->unique()->index();
             $table->string('title', 60);
             $table->text('url');
-            $table->dateTime('expires_in');
+            $table->dateTime('expires_in')->nullable();
             $table->datetimes();
         });
     }

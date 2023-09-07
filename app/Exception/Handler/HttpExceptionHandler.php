@@ -5,24 +5,21 @@ declare(strict_types=1);
 namespace App\Exception\Handler;
 
 use Hyperf\ExceptionHandler\ExceptionHandler;
-use Hyperf\HttpMessage\Exception\HttpException;
 use Hyperf\HttpMessage\Stream\SwooleStream;
+use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
 class HttpExceptionHandler extends ExceptionHandler
 {
-
-    public function handle(Throwable $throwable, ResponseInterface $response)
+    public function handle(Throwable $throwable, ResponseInterface $response): MessageInterface|ResponseInterface
     {
         $this->stopPropagation();
 
         return $response
-            ->withHeader(
-                'content-type', 'application/json'
-            )
+            ->withHeader('content-type', 'application/json')
             ->withStatus(
-                $throwable->getCode()
+                $throwable->getCode() > 599 ? 500 : $throwable->getCode()
             )
             ->withBody(
                 new SwooleStream(
@@ -40,6 +37,6 @@ class HttpExceptionHandler extends ExceptionHandler
 
     public function isValid(Throwable $throwable): bool
     {
-        return $throwable instanceof HttpException;
+        return true;
     }
 }
